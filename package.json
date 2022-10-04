@@ -1,0 +1,19 @@
+{
+  "name": "carbuyandsellbackend",
+  "version": "1.0.0",
+  "description": "react native app backend",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "nodemon": "nodemon app.js"
+  },
+  "author": "nirasha",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.6.4",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
