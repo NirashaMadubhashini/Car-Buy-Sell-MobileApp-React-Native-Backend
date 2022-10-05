@@ -1,24 +1,15 @@
 const express = require('express')
-// const mongoose = require('mongoose')
-const user = require('./routes/user')
-const car = require('./routes/car')
+const user = require('./routes/User')
+const car=require('./routes/Car')
 
 const app = express()
-const port = 8000
+const port = 5000
 
 app.use(express.json())
 
-app.use('/user',user)
-app.use('/car',car)
+app.use('/users',user)
+app.use('/cars',car)
 
-// const url = 'mongodb://127.0.0.1/carSaleBackend'
-
-// mongoose.connect(url,{useNewUrlParser: true})
-// const con = mongoose.connection
-
-// con.on("open",()=>{
-//     console.log("MongoDB connected!");
-// })
 
 app.listen(port, ()=>{
     console.log(`app listening port ${port}`);

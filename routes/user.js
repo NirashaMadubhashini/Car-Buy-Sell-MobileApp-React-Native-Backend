@@ -20,22 +20,6 @@ connection.connect(function (err) {
     }
 })
 
-
-router.get('/login/:username/:password', (req, res) => {
-    const username = req.params.username
-    const password = req.params.password;
-
-    var query = "SELECT * FROM users WHERE username=? AND password=?";
-
-    connection.query(query, [username,password], (err, row) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(row);
-        }
-    })
-})
-
 router.post('/', (req, res) => {
     const fullName = req.body.fullName;
     const email=req.body.email;
@@ -60,6 +44,23 @@ router.post('/', (req, res) => {
     })
 
 });
+
+
+router.get('/login/:username/:password', (req, res) => {
+    const username = req.params.username
+    const password = req.params.password;
+
+    var query = "SELECT * FROM users WHERE username=? AND password=?";
+
+    connection.query(query, [username,password], (err, row) => {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(row);
+        }
+    })
+})
+
 
 // router.put('/:id', async(req,res)=>{
 //     const data = req.body
