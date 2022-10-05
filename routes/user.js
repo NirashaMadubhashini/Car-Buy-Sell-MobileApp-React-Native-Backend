@@ -11,7 +11,7 @@ connection.connect(function (err) {
         console.log(err);
     } else {
         console.log('connected to the MySQL Server');
-        var userTableQuery = "CREATE TABLE IF NOT EXISTS users (fullName VARCHAR(255),email VARCHAR(255),phoneNumber VARCHAR(255), username VARCHAR(255) PRIMARY KEY,password VARCHAR(255))";
+        var userTableQuery = "CREATE TABLE IF NOT EXISTS users (fullName VARCHAR(255),phoneNumber VARCHAR(255), username VARCHAR(255) PRIMARY KEY,password VARCHAR(255))";
         connection.query(userTableQuery, function (err, result) {
             if (result.warningCount === 0) {
                 console.log("User table created");
@@ -22,14 +22,13 @@ connection.connect(function (err) {
 
 router.post('/', (req, res) => {
     const fullName = req.body.fullName;
-    const email=req.body.email;
     const phoneNumber = req.body.phoneNumber;
     const username = req.body.username;
     const password = req.body.password;
 
-    var query = "INSERT INTO users (fullName,email,phoneNumber,username,password) VALUES (?,?,?,?,?)";
+    var query = "INSERT INTO users (fullName,phoneNumber,username,password) VALUES (?,?,?,?)";
 
-    connection.query(query, [fullName,email, phoneNumber, username,password], (err) => {
+    connection.query(query, [fullName,phoneNumber, username,password], (err) => {
         if (err) {
             res.send({
                 "status": "500",
