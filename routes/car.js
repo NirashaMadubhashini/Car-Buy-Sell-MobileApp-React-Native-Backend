@@ -14,7 +14,7 @@ connection.connect(function (err) {
         var userTableQuery = "CREATE TABLE IF NOT EXISTS cars (registrationnumber VARCHAR(255)  PRIMARY KEY,brand VARCHAR(255),transmissionType VARCHAR(255),fuelType VARCHAR(255),color VARCHAR(255),numberofpassengers VARCHAR(255),price VARCHAR(255),img VARCHAR(255))";
         connection.query(userTableQuery, function (err, result) {
             if (result.warningCount === 0) {
-                console.log("User table created");
+                console.log("Car table created");
             }
         })
     }
