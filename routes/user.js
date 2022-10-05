@@ -26,6 +26,8 @@ router.post('/', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    
+
     var query = "INSERT INTO users (fullName,phoneNumber,username,password) VALUES (?,?,?,?)";
 
     connection.query(query, [fullName,phoneNumber, username,password], (err) => {
