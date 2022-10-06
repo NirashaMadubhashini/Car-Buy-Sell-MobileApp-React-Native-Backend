@@ -19,7 +19,29 @@ connection.connect(function(err){
     }
 })
 
+router.post('/', (req, res) => {
+    const date = req.body.fullName;
+    const location = req.body.location;
+    const description = req.body.description;
+    const image = req.body.image;
 
+    var query = "INSERT INTO cars (date,location,description,image) VALUES (?,?,?,?)";
+
+    connection.query(query, [date, location, description, image], (err) => {
+        if (err) {
+            res.send({
+                "status": "500",
+                // "message": "Username Already Exists!"
+            });
+        } else {
+            res.send({
+                "status": "200",
+                "message": "Car saved successfully"
+            });
+        }
+    })
+
+});
 
 
 module.exports = router
