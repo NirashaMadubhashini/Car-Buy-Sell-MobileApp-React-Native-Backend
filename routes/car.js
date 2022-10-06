@@ -10,7 +10,7 @@ connection.connect(function(err){
     if (err){
         console.log(err);
     } else {
-        var carTableQuery = "CREATE TABLE IF NOT EXISTS cars (date VARCHAR(255), location VARCHAR(255), description TEXT, image VARCHAR(255))";
+        var carTableQuery = "CREATE TABLE IF NOT EXISTS cars (brand VARCHAR(255), transmissionType VARCHAR(255), fuelType VARCHAR(255),color VARCHAR(255),price VARCHAR(255), image VARCHAR(255))";
         connection.query(carTableQuery,function(err,result){
             if (result.warningCount === 0){
                 console.log("Car Table Created");
@@ -20,14 +20,16 @@ connection.connect(function(err){
 })
 
 router.post('/', (req, res) => {
-    const date = req.body.fullName;
-    const location = req.body.location;
-    const description = req.body.description;
+    const brand = req.body.brand;
+    const transmissionType = req.body.transmissionType;
+    const fuelType = req.body.fuelType;
+    const color = req.body.color;
+    const price = req.body.price;
     const image = req.body.image;
 
-    var query = "INSERT INTO cars (date,location,description,image) VALUES (?,?,?,?)";
+    var query = "INSERT INTO cars (brand,transmissionType,fuelType,color,price,image) VALUES (?,?,?,?,?,?)";
 
-    connection.query(query, [date, location, description, image], (err) => {
+    connection.query(query, [brand,transmissionType,fuelType, color, price, image], (err) => {
         if (err) {
             res.send({
                 "status": "500",
