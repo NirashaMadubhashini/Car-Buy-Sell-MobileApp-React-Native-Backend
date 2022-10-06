@@ -11,7 +11,9 @@ connection.connect(function(err){
     if (err){
         console.log(err);
     } else {
-        var carTableQuery = "CREATE TABLE IF NOT EXISTS cars (username VARCHAR(255),brand VARCHAR(255), transmissionType VARCHAR(255), fuelType VARCHAR(255),color VARCHAR(255),price VARCHAR(255), image VARCHAR(255))";
+        // var carTableQuery = "CREATE TABLE IF NOT EXISTS cars (username VARCHAR(255),brand VARCHAR(255), transmissionType VARCHAR(255), fuelType VARCHAR(255),color VARCHAR(255),price VARCHAR(255), image VARCHAR(255))";
+        var carTableQuery = "CREATE TABLE IF NOT EXISTS cars (brand VARCHAR(255), transmissionType VARCHAR(255), fuelType VARCHAR(255),color VARCHAR(255),price VARCHAR(255), image VARCHAR(255))";
+
         connection.query(carTableQuery,function(err,result){
             if (result.warningCount === 0){
                 console.log("Car Table Created");
