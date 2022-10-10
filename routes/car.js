@@ -42,8 +42,9 @@ const upload = multer({storage:storage});
 // })
 
 
-router.post('/save', upload.single('photo'), (req, res) => {
-    const image = req.file.originalname;
+// router.post('/save', upload.single('photo'), (req, res) => {
+    router.post('/save', (req, res) => {
+    // const image = req.file.originalname;
     const brand = req.body.brand;
     const transmissionType = req.body.transmissionType;
     const fuelType = req.body.fuelType;
@@ -72,7 +73,7 @@ router.post('/save', upload.single('photo'), (req, res) => {
 });
 
 // router.get('/loadCars/:brand/:transmissionType/:fuelType/:color/:price/:image', (req, res) => {
-    router.get('/loadCars/:brand/:transmissionType/:fuelType/:color/:price/', (req, res) => {
+    router.get('/loadCars/:brand/:transmissionType/:fuelType/:color/:price', (req, res) => {
     const brand = req.params.brand
     const transmissionType = req.params.transmissionType;
     const fuelType = req.params.fuelType;
